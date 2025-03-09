@@ -1,0 +1,12 @@
+bin
+obj
+*.sln.DotSettings.user
+.vs
+vendor
+.idea
+coverage
+*.iml
+**/*.received.*
+venv
+**/DS_Store/*
+**/.DS_Store/*
