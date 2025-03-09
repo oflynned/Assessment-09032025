@@ -1,4 +1,4 @@
-import {ItemUpdaterFactory} from "./item-factory";
+import {BaseItemUpdater, ItemCategory, ItemUpdaterFactory} from "./item-factory";
 
 export class Item {
   name: string;
@@ -15,20 +15,28 @@ export class Item {
 export class GildedRose {
   items: Array<Item>;
 
-  // private readonly updaterCache = new Map<ItemCategory, BaseItemUpdater>()
+  private readonly updaterMap = new Map<ItemCategory, BaseItemUpdater>()
 
   constructor(items = [] as Array<Item>) {
     this.items = items;
   }
 
   updateQuality() {
-    // this.updaterCache.clear()
+    this.updaterMap.clear()
+
 
     this.items.forEach((item) => {
-      const updater = ItemUpdaterFactory.create(item);
+      const category = ItemUpdaterFactory.getCategory(item);
 
-      updater.update();
-    });
+      if (!this.updaterMap.has(category)) {
+        // let's precompute the updater for each item category so we can reduce the memory footprint
+        this.updaterMap.set(category, ItemUpdaterFactory.create(item))
+      }
+
+      const updater = this.updaterMap.get(category);
+
+      updater?.update(item);
+    })
 
     return this.items;
   }

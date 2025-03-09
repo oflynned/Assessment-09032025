@@ -4,35 +4,32 @@ const MIN_QUALITY = 0
 const MAX_QUALITY = 50
 
 export abstract class AbstractItemUpdater {
-  constructor(readonly item: Item) {
+  update(item: Item) {
+    this.onElapse(item)
+    this.onDayEnd(item)
   }
 
-  update() {
-    this.onElapse()
-    this.onDayEnd()
-  }
-
-  protected onDayEnd() {
-    if (this.item.sellIn > 0) {
-      this.item.sellIn -= 1
+  protected onDayEnd(item: Item) {
+    if (item.sellIn > 0) {
+      item.sellIn -= 1
     }
   }
 
-  protected increaseQuality(delta = 1) {
-    this.item.quality += delta
+  protected increaseQuality(item: Item, delta = 1) {
+    item.quality += delta
 
-    if (this.item.quality > MAX_QUALITY) {
-      this.item.quality = MAX_QUALITY
+    if (item.quality > MAX_QUALITY) {
+      item.quality = MAX_QUALITY
     }
   }
 
-  protected decreaseQuality(delta = 1) {
-    this.item.quality -= delta
+  protected decreaseQuality(item: Item, delta = 1) {
+    item.quality -= delta
 
-    if (this.item.quality < MIN_QUALITY) {
-      this.item.quality = MIN_QUALITY
+    if (item.quality < MIN_QUALITY) {
+      item.quality = MIN_QUALITY
     }
   }
 
-  protected abstract onElapse(): void;
+  protected abstract onElapse(item: Item): void;
 }

@@ -13,15 +13,15 @@ export class ItemUpdaterFactory {
 
     switch (category) {
       case 'Aged Brie':
-        return new AgedBrieItemUpdater(item);
+        return new AgedBrieItemUpdater();
       case 'Backstage Passes':
-        return new BackstagePassItemUpdater(item);
+        return new BackstagePassItemUpdater();
       case 'Sulfuras':
-        return new SulfurasItemUpdater(item);
+        return new SulfurasItemUpdater();
       case 'Conjured':
-        return new ConjuredItemUpdater(item);
+        return new ConjuredItemUpdater();
       default:
-        return new BaseItemUpdater(item);
+        return new BaseItemUpdater();
     }
   }
 
