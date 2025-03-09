@@ -1,14 +1,12 @@
 import {Item} from "../../../app/gilded-rose";
-import {ItemUpdaterFactory} from "../../../app/item-factory";
-import {ConjuredItemUpdater} from "@/item-factory/conjured-item.updater";
-import {BaseItemUpdater} from "@/item-factory/item.updater";
+import {BaseItemUpdater} from "../../../app/item-factory";
 
-describe('Item Updater', () => {
+describe('Base Item Updater', () => {
   it('should decrement day and decrease quality', () => {
     const item = new Item('Item', 5, 5)
-    const updater = new BaseItemUpdater(item)
+    const updater = new BaseItemUpdater()
 
-    updater.update()
+    updater.update(item)
 
     expect(item.sellIn).toBe(4)
     expect(item.quality).toBe(4)
@@ -16,9 +14,9 @@ describe('Item Updater', () => {
 
   it('should decrease quality even if sellIn reaches 0', () => {
     const item = new Item('Conjured item', 0, 5)
-    const updater = new BaseItemUpdater(item)
+    const updater = new BaseItemUpdater()
 
-    updater.update()
+    updater.update(item)
 
     expect(item.sellIn).toBe(0)
     expect(item.quality).toBe(4)
@@ -26,9 +24,9 @@ describe('Item Updater', () => {
 
   it('should limit lowest quality to 0', () => {
     const item = new Item('Conjured item', 0, 0)
-    const updater = new BaseItemUpdater(item)
+    const updater = new BaseItemUpdater()
 
-    updater.update()
+    updater.update(item)
 
     expect(item.sellIn).toBe(0)
     expect(item.quality).toBe(0)
