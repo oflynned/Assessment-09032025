@@ -1,10 +1,10 @@
-import {Item} from "../../../app/gilded-rose";
-import {ItemUpdaterFactory} from "../../../app/item-factory";
-import {AgedBrieItemUpdater} from "../../../app/item-factory/aged-brie.updater";
-import {BackstagePassItemUpdater} from "../../../app/item-factory/backstage-pass.updater";
-import {BaseItemUpdater} from "../../../app/item-factory/base-item.updater";
-import {ConjuredItemUpdater} from "../../../app/item-factory/conjured-item.updater";
-import {SulfurasItemUpdater} from "../../../app/item-factory/sulfuras.updater";
+import {ItemUpdaterFactory} from "./item-updater.factory";
+import {Item} from "../gilded-rose";
+import {AgedBrieItemUpdater} from "./aged-brie.updater";
+import {BackstagePassItemUpdater} from "./backstage-pass.updater";
+import {SulfurasItemUpdater} from "./sulfuras.updater";
+import {ConjuredItemUpdater} from "./conjured-item.updater";
+import {BaseItemUpdater} from "./base-item.updater";
 
 describe('Item Updater Factory', () => {
   describe('create', () => {

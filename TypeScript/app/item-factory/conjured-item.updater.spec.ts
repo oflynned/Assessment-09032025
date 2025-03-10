@@ -1,5 +1,5 @@
-import {Item} from "../../../app/gilded-rose";
-import {ConjuredItemUpdater} from "../../../app/item-factory/conjured-item.updater";
+import {Item} from "../gilded-rose";
+import {ConjuredItemUpdater} from "./conjured-item.updater";
 
 describe('Conjured Updater', () => {
   it('should decrement day and decrease quality twice as quickly', () => {

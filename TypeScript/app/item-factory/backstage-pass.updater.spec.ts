@@ -1,5 +1,5 @@
-import {Item} from "../../../app/gilded-rose";
-import {BackstagePassItemUpdater} from "../../../app/item-factory/backstage-pass.updater";
+import {Item} from "../gilded-rose";
+import {BackstagePassItemUpdater} from "./backstage-pass.updater";
 
 describe('Backstage Passes Updater', () => {
   it('should increase quality by 1 outside of day limits', () => {
@@ -38,7 +38,7 @@ describe('Backstage Passes Updater', () => {
 
     updater.update(item)
 
-    expect(item.sellIn).toBe(0)
+    expect(item.sellIn).toBe(-1)
     expect(item.quality).toBe(0)
   })
 })

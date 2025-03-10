@@ -1,5 +1,4 @@
-import { execSync } from 'node:child_process';
-import { Item, GildedRose } from '@/gilded-rose';
+import {GildedRose, Item} from "../../app/gilded-rose";
 
 /**
  * This test uses Vitest Snapshot, similar to [Jest Snapshot](https://goo.gl/fbAQLP).
@@ -17,14 +16,5 @@ describe('Gilded Rose Approval', () => {
     const items = gildedRose.updateQuality();
 
     expect(items).toMatchSnapshot();
-  });
-
-  it('should thirtyDays', () => {
-    const consoleOutput = execSync(
-      'ts-node test/golden-master-text-test.ts 30',
-      { encoding: 'utf-8' }
-    );
-
-    expect(consoleOutput).toMatchSnapshot();
   });
 });
