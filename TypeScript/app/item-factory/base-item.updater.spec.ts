@@ -12,8 +12,8 @@ describe('Base Item Updater', () => {
     expect(item.quality).toBe(4)
   })
 
-  it('should decrease quality and sellIn even if sellIn is 0', () => {
-    const item = new Item('Conjured item', 0, 5)
+  it('should allow sellIn to go below 0', () => {
+    const item = new Item('Item', 0, 5)
     const updater = new BaseItemUpdater()
 
     updater.update(item)
@@ -23,7 +23,7 @@ describe('Base Item Updater', () => {
   })
 
   it('should limit lowest quality to 0', () => {
-    const item = new Item('Conjured item', 1, 0)
+    const item = new Item('Item', 1, 0)
     const updater = new BaseItemUpdater()
 
     updater.update(item)
